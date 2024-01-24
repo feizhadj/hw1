@@ -55,12 +55,13 @@
 
 -- Proposed Domain Model
 -- Table 1 contains all film related info except for characters/actors
--- Table 2 contains film name + character name
--- Table 3 contains actor name + character name
+-- Table 2 contains character name and affiliated movie_id from Table 1
+-- Table 3 contains actor name and character_id
+-- This will allow the models to have a looped connection based on the foreign_id keys
 
 DROP TABLE IF EXISTS movie_info;
 DROP TABLE IF EXISTS movie_character;
-DROP TABLE IF EXISTS actor_character
+DROP TABLE IF EXISTS actor_character;
 
 -- Create the rest of the tables
 
@@ -90,8 +91,7 @@ CREATE TABLE actor_character (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   actor_first_name TEXT,
   actor_last_name TEXT,
-  character_id INTEGER,
-  movie_id INTEGER
+  character_id INTEGER
 );
 
 
