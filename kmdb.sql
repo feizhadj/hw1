@@ -348,14 +348,14 @@ VALUES (
     15);
 
 --- Create a New Combined Table from a couple others above, just trouble shooting...
-.print "TESTTING"
-CREATE TABLE info_movie_character AS
-SELECT info_movie.id AS movie_id, info_movie.movie_name, movie_character.id AS character_id, movie_character.character_name
-FROM movie_character
-LEFT JOIN info_movie ON movie_character.movie_id = info_movie.id;
+-- .print "TESTTING"
+-- CREATE TABLE info_movie_character AS
+-- SELECT info_movie.id AS movie_id, info_movie.movie_name, movie_character.id AS character_id, movie_character.character_name
+-- FROM movie_character
+-- LEFT JOIN info_movie ON movie_character.movie_id = info_movie.id;
 
-SELECT * 
-FROM info_movie_character;
+-- SELECT * 
+-- FROM info_movie_character;
 
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
