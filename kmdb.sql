@@ -42,20 +42,59 @@
 -- 1. Domain model - 6 points
 -- - Think about how the domain model needs to reflect the
 --   "real world" entities and the relationships with each other. 
+
 --   Hint #1: It's not just a single table that contains everything in the 
 --   expected output. There are multiple real world entities and
 --   relationships including at least one many-to-many relationship.
+
 --   Hint #2: Do NOT name one of your models/tables “cast” or “casts”; this 
 --   is a reserved word in sqlite and will break your database! Instead, 
 --   think of a better word to describe this concept; i.e. the relationship 
 --   between an actor and the movie in which they play a part.
+
+DROP TABLE IF EXISTS movie_info;
+DROP TABLE IF EXISTS movie_character;
+DROP TABLE IF EXISTS actor_character
+
+-- Create the rest of the tables
+
+
 -- 2. Execution of the domain model (CREATE TABLE) - 4 points
 -- - Follow best practices for table and column names
 -- - Use correct data column types (i.e. TEXT/INTEGER)
 -- - Use of the `model_id` naming convention for foreign key columns
+
+CREATE TABLE movie_info (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_name TEXT,
+  director_first_name TEXT,
+  director_last_name TEXT,
+  year TEXT,
+  company TEXT,
+  rating TEXT,
+);
+
+CREATE TABLE movie_character (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_name TEXT,
+  actor_first_name TEXT,
+  actor_last_name TEXT,
+  character_name TEXT
+);
+
+CREATE TABLE actor_character (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor_first_name TEXT,
+  actor_last_name TEXT,
+  character_name TEXT
+);
+
+
+
 -- 3. Insertion of data (INSERT statements) - 4 points
 -- - Insert data into all the tables you've created
 -- - It actually works, i.e. proper INSERT syntax
+
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
 --   sample output below - 1 for movies and 1 for cast. You will need
