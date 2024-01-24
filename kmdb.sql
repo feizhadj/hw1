@@ -63,6 +63,8 @@ DROP TABLE IF EXISTS info_movie;
 DROP TABLE IF EXISTS movie_character;
 DROP TABLE IF EXISTS actor_character;
 DROP TABLE IF EXISTS company_movie;
+DROP TABLE IF EXISTS info_movie_actor;
+DROP TABLE IF EXISTS info_movie_character;
 
 -- Create the rest of the tables
 
@@ -344,7 +346,16 @@ INSERT INTO actor_character (
 VALUES (
     "Selina Kyle",
     15);
----
+
+--- Create a New Combined Table from a couple others above, just trouble shooting...
+.print "TESTTING"
+CREATE TABLE info_movie_character AS
+SELECT info_movie.id AS movie_id, info_movie.movie_name, movie_character.id AS character_id, movie_character.character_name
+FROM movie_character
+LEFT JOIN info_movie ON movie_character.movie_id = info_movie.id;
+
+SELECT * 
+FROM info_movie_character;
 
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
@@ -359,7 +370,7 @@ VALUES (
 .print "======"
 .print ""
 
-SELECT id, movie_name 
+SELECT movie_name, year_release, rating, company 
 FROM info_movie;
 
 .print ""
@@ -367,9 +378,11 @@ FROM info_movie;
 .print "========"
 .print ""
 
-SELECT id, character_name, movie_id
-FROM movie_character;
-
+SELECT info_movie.movie_name, actor_character.actor_name, movie_character.character_name
+FROM movie_character
+LEFT JOIN info_movie ON movie_character.movie_id = info_movie.id
+LEFT JOIN actor_character ON movie_character.id = actor_character.character_id
+ORDER BY info_movie.movie_name;
 
 -- Submission
 -- 
