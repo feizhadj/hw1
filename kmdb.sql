@@ -275,7 +275,75 @@ VALUES (
     "Michael Caine",
     5);
 
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Gary Oldman",
+    6);
 
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Gary Oldman",
+    7);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Ra's Al Ghul",
+    8);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Katie Holmes",
+    9);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Maggie Gyllenhaal",
+    10);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Heath Ledger",
+    11);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Aaron Eckhart",
+    12);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Tom Hardy",
+    13);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Joseph Gordon-Levitt",
+    14);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Selina Kyle",
+    15);
 ---
 
 -- 4. "The report" (SELECT statements) - 6 points
@@ -283,8 +351,21 @@ VALUES (
 --   sample output below - 1 for movies and 1 for cast. You will need
 --   to read data from multiple tables in each `SELECT` statement.
 --   Formatting does not matter.
+
+.mode column
+.headers off
+
+.print "Movies"
+.print "======"
+.print ""
+
 SELECT id, movie_name 
 FROM info_movie;
+
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
 
 SELECT id, character_name, movie_id
 FROM movie_character;
@@ -328,8 +409,7 @@ FROM movie_character;
 -- The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 -- Turns column mode on but headers off
-.mode column
-.headers off
+
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO! [Done]
@@ -342,19 +422,12 @@ FROM movie_character;
 -- TODO! 
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
-
 
 -- The SQL statement for the cast output
 -- TODO!
