@@ -52,6 +52,12 @@
 --   think of a better word to describe this concept; i.e. the relationship 
 --   between an actor and the movie in which they play a part.
 
+
+-- Proposed Domain Model
+-- Table 1 contains all film related info except for characters/actors
+-- Table 2 contains film name + character name
+-- Table 3 contains actor name + character name
+
 DROP TABLE IF EXISTS movie_info;
 DROP TABLE IF EXISTS movie_character;
 DROP TABLE IF EXISTS actor_character
@@ -76,19 +82,17 @@ CREATE TABLE movie_info (
 
 CREATE TABLE movie_character (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_name TEXT,
-  actor_first_name TEXT,
-  actor_last_name TEXT,
-  character_name TEXT
+  character_name TEXT,
+  movie_id INTEGER
 );
 
 CREATE TABLE actor_character (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   actor_first_name TEXT,
   actor_last_name TEXT,
-  character_name TEXT
+  character_id INTEGER,
+  movie_id INTEGER
 );
-
 
 
 -- 3. Insertion of data (INSERT statements) - 4 points
@@ -143,14 +147,14 @@ CREATE TABLE actor_character (
 .headers off
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
--- TODO!
+-- TODO! [Done]
 
 -- Create new tables, according to your domain model
--- TODO!
+-- TODO! [Done]
 
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
--- TODO!
+-- TODO! 
 
 -- Prints a header for the movies output
 .print "Movies"
