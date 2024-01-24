@@ -59,9 +59,10 @@
 -- Table 3 contains actor name and character_id
 -- This will allow the models to have a looped connection based on the foreign_id keys
 
-DROP TABLE IF EXISTS movie_info;
+DROP TABLE IF EXISTS info_movie;
 DROP TABLE IF EXISTS movie_character;
 DROP TABLE IF EXISTS actor_character;
+DROP TABLE IF EXISTS company_movie;
 
 -- Create the rest of the tables
 
@@ -71,14 +72,12 @@ DROP TABLE IF EXISTS actor_character;
 -- - Use correct data column types (i.e. TEXT/INTEGER)
 -- - Use of the `model_id` naming convention for foreign key columns
 
-CREATE TABLE movie_info (
+CREATE TABLE info_movie (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_name TEXT,
-  director_first_name TEXT,
-  director_last_name TEXT,
-  year TEXT,
-  company TEXT,
+  year_release TEXT,
   rating TEXT,
+  company TEXT
 );
 
 CREATE TABLE movie_character (
@@ -89,21 +88,207 @@ CREATE TABLE movie_character (
 
 CREATE TABLE actor_character (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_first_name TEXT,
-  actor_last_name TEXT,
+  actor_name TEXT,
   character_id INTEGER
 );
+
 
 
 -- 3. Insertion of data (INSERT statements) - 4 points
 -- - Insert data into all the tables you've created
 -- - It actually works, i.e. proper INSERT syntax
 
+INSERT INTO info_movie (
+    movie_name,
+    year_release,
+    rating,
+    company)
+VALUES (
+    ("Batman Begins"), 
+    ("2005"), 
+    ("PG-13"),
+    ("Warner Bros."));
+
+INSERT INTO info_movie (
+    movie_name,
+    year_release,
+    rating,
+    company)
+VALUES (
+    ("The Dark Knight"), 
+    ("2008"), 
+    ("PG-13"),
+    ("Warner Bros."));
+
+INSERT INTO info_movie (
+    movie_name,
+    year_release,
+    rating,
+    company)
+VALUES (
+    ("The Dark Knight Rises"), 
+    ("2012"), 
+    ("PG-13"),
+    ("Warner Bros."));
+
+
+---
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Bruce Wayne",
+    1);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Bruce Wayne",
+    2);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Bruce Wayne",
+    3);
+---
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Alfred",
+    1);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Alfred",
+    2);
+
+---
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Commissioner Gordon",
+    1);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Commissioner Gordon",
+    3);
+---
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Ra's Al Ghul",
+    1);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Rachel Dawes",
+    1);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Rachel Dawes",
+    2);
+
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Joker",
+    2);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Harvey Dent",
+    2);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Bane",
+    3);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "John Blake",
+    3);
+
+INSERT INTO movie_character (
+    character_name,
+    movie_id)
+VALUES (
+    "Selina Kyle",
+    3);
+---
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Christian Bale",
+    1);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Christian Bale",
+    2);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Christian Bale",
+    3);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Michael Caine",
+    4);
+
+INSERT INTO actor_character (
+    actor_name,
+    character_id)
+VALUES (
+    "Michael Caine",
+    5);
+
+
+---
+
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
 --   sample output below - 1 for movies and 1 for cast. You will need
 --   to read data from multiple tables in each `SELECT` statement.
 --   Formatting does not matter.
+SELECT id, movie_name 
+FROM info_movie;
+
+SELECT id, character_name, movie_id
+FROM movie_character;
+
 
 -- Submission
 -- 
